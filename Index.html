@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLEEM GENERADOR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background: radial-gradient(circle at top,#1a0022,#000000);
+    color:white;
+}
+
+.header{
+    text-align:center;
+    padding:40px 20px 20px 20px;
+}
+
+.header h1{
+    font-size:40px;
+    margin:0;
+}
+
+.header span{
+    color:#a855f7;
+}
+
+.header p{
+    margin-top:10px;
+    font-size:15px;
+    color:#c084fc;
+    letter-spacing:2px;
+}
+
+.menu{
+    padding:20px;
+}
+
+.card{
+    background:linear-gradient(145deg,#14001f,#0a0014);
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    box-shadow:0 0 20px rgba(168,85,247,0.2);
+    border:1px solid rgba(168,85,247,0.3);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 30px rgba(168,85,247,0.6);
+}
+
+.icon{
+    width:50px;
+    height:50px;
+    background:rgba(168,85,247,0.15);
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    color:#a855f7;
+}
+
+.screen{
+    display:none;
+    padding:20px;
+    text-align:center;
+}
+
+button{
+    background:#7e22ce;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    color:white;
+    font-weight:bold;
+    margin-top:20px;
+    cursor:pointer;
+    box-shadow:0 0 15px rgba(168,85,247,0.5);
+    transition:0.3s;
+}
+
+button:hover{
+    background:#a855f7;
+    box-shadow:0 0 25px rgba(168,85,247,0.8);
+}
+
+.result{
+    margin-top:20px;
+    font-size:14px;
+    line-height:1.8;
+    text-align:left;
+}
+</style>
+</head>
+<body>
+
+<!-- MENU PRINCIPAL -->
+<div id="menuPrincipal">
+    <div class="header">
+        <h1>BLEEM<span> AI</span></h1>
+        <p>BLEEM GENERADOR</p>
+    </div>
+
+    <div class="menu">
+
+        <div class="card" onclick="abrir('famosos')">
+            <div class="icon">⭐</div>
+            <div>
+                <h2>Sensi Famosos</h2>
+                <p>Configuraciones simuladas</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="abrir('dpi')">
+            <div class="icon">📱</div>
+            <div>
+                <h2>DPI Android</h2>
+                <p>Generador automático</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="abrir('aleatoria')">
+            <div class="icon">⚡</div>
+            <div>
+                <h2>Sensi Aleatoria</h2>
+                <p>Valores personalizados</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FAMOSOS -->
+<div id="famosos" class="screen">
+    <h2>Sensibilidad Famosos</h2>
+    <button onclick="generarFamosos()">GENERAR</button>
+    <div class="result" id="resultadoFamosos"></div>
+    <button onclick="volver()">VOLVER</button>
+</div>
+
+<!-- DPI -->
+<div id="dpi" class="screen">
+    <h2>Generador DPI</h2>
+    <button onclick="generarDPI()">GENERAR DPI</button>
+    <div class="result" id="resultadoDPI"></div>
+    <button onclick="volver()">VOLVER</button>
+</div>
+
+<!-- ALEATORIA -->
+<div id="aleatoria" class="screen">
+    <h2>Sensibilidad Aleatoria</h2>
+    <button onclick="generarAleatoria()">GENERAR</button>
+    <div class="result" id="resultadoAleatoria"></div>
+    <button onclick="volver()">VOLVER</button>
+</div>
+
+<script>
+function abrir(id){
+    document.getElementById("menuPrincipal").style.display="none";
+    document.getElementById(id).style.display="block";
+}
+
+function volver(){
+    document.querySelectorAll(".screen").forEach(e=>e.style.display="none");
+    document.getElementById("menuPrincipal").style.display="block";
+}
+
+function random(min,max){
+    return Math.floor(Math.random()*(max-min+1))+min;
+}
+
+function generarFamosos(){
+    document.getElementById("resultadoFamosos").innerHTML=`
+    General: ${random(100,200)}<br>
+    Punto Rojo: ${random(100,200)}<br>
+    Mira 2x: ${random(100,200)}<br>
+    Mira 4x: ${random(100,200)}<br>
+    AWM: ${random(100,200)}
+    `;
+}
+
+function generarDPI(){
+    document.getElementById("resultadoDPI").innerHTML=
+    `DPI Recomendado: ${random(500,900)}`;
+}
+
+function generarAleatoria(){
+    document.getElementById("resultadoAleatoria").innerHTML=`
+    General: ${random(100,200)}<br>
+    Punto Rojo: ${random(100,200)}<br>
+    Mira 2x: ${random(100,200)}<br>
+    Mira 4x: ${random(100,200)}<br>
+    AWM: ${random(100,200)}
+    `;
+}
+</script>
+
+</body>
+</html>
